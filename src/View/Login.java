@@ -4,6 +4,7 @@
  */
 package View;
 
+import Model.UsuarioDAO;
 import javax.swing.*;
 
 /**
@@ -199,18 +200,19 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtenterActionPerformed
-        final String usuario = "admin";
-        final String contraseña = "123";
+            String username = txtemail.getText();
+        String password = new String(txtpassword.getPassword());
 
-        String pass = new String(txtpassword.getPassword());
+        UsuarioDAO userDao = new UsuarioDAO();
 
-        if (txtemail.getText().equals(usuario)&& pass.equals(contraseña)){
-            inicioo acceso = new inicioo();
-            acceso.setVisible(true);
-            this.diapose();
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "invalid password or user");
+        boolean isAuthenticated = userDao.authenticateUser(username, password);
+
+        if (isAuthenticated) {
+            Admin s = new Admin();
+            s.setVisible(true);
+            this.dispose(); 
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta", "Error de Login", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_BtenterActionPerformed

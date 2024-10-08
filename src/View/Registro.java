@@ -106,18 +106,20 @@ public class Registro extends javax.swing.JFrame {
                 jRadioButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        jPanel4.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(38, 75, 100));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Create account");
         jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 150, 30));
 
-        jButton3.setText("Términos y condiciones ");
+        jButton3.setText("Terminos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 160, 20));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 90, 20));
 
         jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 350, 410));
 

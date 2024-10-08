@@ -6,32 +6,28 @@ package Model;
 
 //atributos
 public class Usuario {
-    private String id_usuario;
     private String usuario;
     private String contraseña;
     private String nombre;
     private String rol;
     private String correo;
+    private String telefono;
+    private String identificacion;
     
 //constructor
     public Usuario(String name, String apellido, String email, String identificacion, String celular) {
-        this.id_usuario = id_usuario;
         this.usuario = usuario;
         this.contraseña = contraseña;
         this.nombre = nombre;
         this.rol = rol;
         this.correo = correo;
+        this.telefono = telefono;
+        this.identificacion = identificacion;
         
         
     }
 //getter and setter
-    public String getId_usuario() {
-        return id_usuario;
-    }
-
-    public void setId_usuario(String id_usuario) {
-        this.id_usuario = id_usuario;
-    }
+   
 
     public String getUsuario() {
         return usuario;
@@ -71,7 +67,20 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
+     public String gettelefono(String telefono) {
+        return telefono;
+    }
+
+    public void settelefono(String telefono) {
+        this.telefono = telefono;
+    }
+      public String getidentificacion(String identificacion) {
+        return identificacion;
+    }
+
+    public void setidentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
     
     
 }
