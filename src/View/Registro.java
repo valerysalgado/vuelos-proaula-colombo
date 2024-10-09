@@ -4,6 +4,8 @@
  */
 package View;
 
+import Model.UsuarioDAO;
+
 /**
  *
  * @author valer
@@ -15,6 +17,8 @@ public class Registro extends javax.swing.JFrame {
      */
     public Registro() {
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     /**
@@ -35,14 +39,16 @@ public class Registro extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        txtRname = new javax.swing.JTextField();
+        txtRemail = new javax.swing.JTextField();
+        txtRcellphone = new javax.swing.JTextField();
+        txtRpass = new javax.swing.JTextField();
+        txtRconfirmpass = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        txtRidentificacion = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -64,62 +70,73 @@ public class Registro extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Nombre completo *");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
+        jLabel2.setText("Full name*");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         jLabel3.setText("Email *");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
-        jLabel4.setText("Numero de celular *");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        jLabel4.setText("Cell phone number*");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
-        jLabel5.setText("Contraseña *");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        jLabel5.setText("Password*");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
-        jLabel6.setText("Confirmar contraseña *");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
+        jLabel6.setText("Confirm pasword*");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Create new account ");
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
-        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 220, -1));
-        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 220, -1));
+        jPanel4.add(txtRname, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 220, -1));
+        jPanel4.add(txtRemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 220, -1));
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtRcellphone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtRcellphoneActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 220, -1));
+        jPanel4.add(txtRcellphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 220, -1));
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtRpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtRpassActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 220, -1));
-        jPanel4.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 220, -1));
+        jPanel4.add(txtRpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 220, -1));
+        jPanel4.add(txtRconfirmpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 220, -1));
 
+        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jRadioButton1.setText("Estoy de acuerdo con los");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+        jPanel4.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(38, 75, 100));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Create account");
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 150, 30));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 150, 30));
 
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jButton3.setText("Terminos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 90, 20));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 80, 20));
+
+        jLabel8.setText("identification*");
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        jPanel4.add(txtRidentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 220, -1));
 
         jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 350, 410));
 
@@ -162,13 +179,13 @@ public class Registro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtRpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRpassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtRpassActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtRcellphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRcellphoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtRcellphoneActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
@@ -185,6 +202,19 @@ public class Registro extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         new terminosycondiciones().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String name = txtRname.getText();
+        String email = txtRemail.getText();
+        String cell = txtRcellphone.getText();
+        String pass = txtRpass.getText();
+        String confirmpass = txtRconfirmpass.getText();
+        String identificacion = txtRidentificacion.getText();
+        
+        UsuarioDAO userDao = new UsuarioDAO();
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,16 +263,18 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField txtRcellphone;
+    private javax.swing.JTextField txtRconfirmpass;
+    private javax.swing.JTextField txtRemail;
+    private javax.swing.JTextField txtRidentificacion;
+    private javax.swing.JTextField txtRname;
+    private javax.swing.JTextField txtRpass;
     // End of variables declaration//GEN-END:variables
 }

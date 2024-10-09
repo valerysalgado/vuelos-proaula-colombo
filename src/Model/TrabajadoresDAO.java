@@ -27,7 +27,7 @@ public class TrabajadoresDAO {
                 String telefono = rs.getString("telefono");
                 String avion = rs.getString("avion");
 
-               Trabajadores trabajador = new Trabajadores(identificacion, telefono, correo, rol, nombre,contraseña);
+               Trabajadores trabajador = new Trabajadores(identificacion, nombre, apellido, correo, telefono,avion);
             }
 
         } catch (SQLException e) {
@@ -37,10 +37,10 @@ public class TrabajadoresDAO {
         return trabajadoreslist;
     }
     
-    public void contratarTrabajador(String nombre, String apellidos, String correo, String telefono, LocalDate fechaContratacion, String materia) {
+    public void contratarTrabajador(String nombre, String apellidos, String correo, String telefono, LocalDate fechaContratacion, String avion) {
     
 
-    String sql = "INSERT INTO profesores (identificacion, nombre, apellido, correo_electronico, telefono, fecha_contratacion, materia) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO profesores (identificacion, nombre, apellido, correo_electronico, telefono, fecha_contratacion, avion) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     try (Connection con = ConexionDB.conectar();
          PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -51,7 +51,7 @@ public class TrabajadoresDAO {
         pstmt.setString(4, correo);
         pstmt.setString(5, telefono);
         pstmt.setDate(6, java.sql.Date.valueOf(fechaContratacion));
-        pstmt.setString(7, materia);
+        pstmt.setString(7, avion);
 
         pstmt.executeUpdate();
         System.out.println("Profesor insertado con exito.");
