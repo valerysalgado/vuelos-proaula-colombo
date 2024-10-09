@@ -40,8 +40,8 @@ public class UsuarioDAO {
         }
     }
 
-    public List<UsuarioDAO> obtenerUsuarios() {
-        List<UsuarioDAO> usuarioList = new ArrayList<>();
+    public List<Usuario> obtenerUsuarios() {
+        List<Usuario> usuarioList = new ArrayList<>();
         String sql = "SELECT identificacion, nombre, apellido, correo, telefono FROM usuarios";
 
         try (Connection con = ConexionDB.conectar(); PreparedStatement pstmt = con.prepareStatement(sql); ResultSet rs = pstmt.executeQuery()) {
@@ -53,8 +53,8 @@ public class UsuarioDAO {
                 String correo = rs.getString("correo");
                 String telefono = rs.getString("telefono");
 
-                Usuario trabajador = new Usuario(identificacion, nombre, apellido, correo, telefono);
-                usuarioList.add(trabajador);
+                Usuario usuario = new Usuario(identificacion, nombre, apellido, correo, telefono);
+                usuarioList.add(usuario);
             }
 
         } catch (SQLException e) {
@@ -64,9 +64,9 @@ public class UsuarioDAO {
         return usuarioList;
     }
 
-    public void RegistrarUsuario(String nombre, String apellidos, String correo, String telefono, LocalDate fechaderegistro, String materia) {
+    public void RegistrarUsuario(String nombre, String apellidos, String correo, String telefono, LocalDate fechaderegistro) {
 
-        String sql = "INSERT INTO profesores (identificacion, nombre, apellido, correo_electronico, telefono, fecha_contratacion, materia) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios (identificacion, nombre, apellido, correo_electronico, telefono, fecha_contratacion) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection con = ConexionDB.conectar(); PreparedStatement pstmt = con.prepareStatement(sql)) {
 
@@ -77,10 +77,10 @@ public class UsuarioDAO {
             pstmt.setDate(6, java.sql.Date.valueOf(fechaderegistro));
 
             pstmt.executeUpdate();
-            System.out.println("Profesor insertado con exito.");
+            System.out.println("Usuario registardo con exito.");
 
         } catch (SQLException e) {
-            System.err.println("Error al insertar el profesor: " + e.getMessage());
+            System.err.println("Error al registrar el usuario: " + e.getMessage());
         }
     }
 
