@@ -26,19 +26,15 @@ public class sistemadepago extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField4 = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -57,6 +53,11 @@ public class sistemadepago extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField11 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
+        jTextField13 = new javax.swing.JTextField();
+        jTextField14 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,7 +76,6 @@ public class sistemadepago extends javax.swing.JFrame {
         jLabel2.setText("Celular *");
         jLabel2.setPreferredSize(new java.awt.Dimension(58, 20));
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 70, -1));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 140, 20));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MES", "Item 2", "Item 3", "Item 4" }));
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 60, 20));
@@ -90,16 +90,6 @@ public class sistemadepago extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel8.setText("Elegir metodo de pago");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 270, -1));
-
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 160, 20));
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 150, 20));
-        jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 160, 20));
-        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 140, 20));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Nombre *");
@@ -138,10 +128,10 @@ public class sistemadepago extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Numero de identificación *");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
-        jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 160, -1));
+        jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 160, -1));
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cedula de ciudadania", "Pasaporte de extrangeria", "Registro civil", "Tarjeta de identidad", " " }));
-        jPanel2.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 160, 20));
+        jPanel2.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 160, 30));
 
         jPanel4.setBackground(new java.awt.Color(38, 75, 100));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(192, 201, 211)));
@@ -169,6 +159,7 @@ public class sistemadepago extends javax.swing.JFrame {
         jLabel10.setText("Persona 1");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 140, -1));
 
+        buttonGroup2.add(jRadioButton1);
         jRadioButton1.setText("Transferencia");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,6 +168,7 @@ public class sistemadepago extends javax.swing.JFrame {
         });
         jPanel2.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
 
+        buttonGroup2.add(jRadioButton2);
         jRadioButton2.setText("Tarjeta de credito o debito");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +177,7 @@ public class sistemadepago extends javax.swing.JFrame {
         });
         jPanel2.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, -1, -1));
 
+        buttonGroup2.add(jRadioButton3);
         jRadioButton3.setText("Efectivo");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,6 +185,11 @@ public class sistemadepago extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, -1, -1));
+        jPanel2.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 160, -1));
+        jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 160, -1));
+        jPanel2.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 160, -1));
+        jPanel2.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 160, -1));
+        jPanel2.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 160, -1));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 800, 500);
@@ -213,10 +211,6 @@ public class sistemadepago extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         new inicioo().setVisible(true);       // TODO add your handling code here:
@@ -271,6 +265,7 @@ public class sistemadepago extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -295,12 +290,12 @@ public class sistemadepago extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

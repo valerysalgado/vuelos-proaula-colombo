@@ -211,6 +211,11 @@ public class Registro extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
+        
+    if (!jRadioButton1.isSelected()) {
+        JOptionPane.showMessageDialog(this, "Debe estar de acuerdo con los términos y condiciones para continuar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
 
     
     if (!pass.equals(confirmpass)) {
