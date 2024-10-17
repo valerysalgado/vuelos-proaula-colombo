@@ -6,6 +6,7 @@ package View;
 
 import Model.UsuarioDAO;
 
+import javax.swing.*;
 /**
  *
  * @author valer
@@ -49,9 +50,9 @@ public class Registro extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtRidentificacion = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
 
@@ -123,7 +124,7 @@ public class Registro extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 150, 30));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 120, 30));
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jButton3.setText("Terminos");
@@ -138,6 +139,14 @@ public class Registro extends javax.swing.JFrame {
         jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
         jPanel4.add(txtRidentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 220, -1));
 
+        jButton2.setText("Login");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 90, 30));
+
         jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 350, 410));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo h final.png"))); // NOI18N
@@ -147,15 +156,6 @@ public class Registro extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(38, 75, 100));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(192, 201, 211)));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton2.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
-        jButton2.setText("Login");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel7.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, -10, -1, 60));
 
         jLabel7.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -178,10 +178,6 @@ public class Registro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtRpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRpassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRpassActionPerformed
 
     private void txtRcellphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRcellphoneActionPerformed
         // TODO add your handling code here:
@@ -211,10 +207,39 @@ public class Registro extends javax.swing.JFrame {
         String confirmpass = txtRconfirmpass.getText();
         String identificacion = txtRidentificacion.getText();
         
-        UsuarioDAO userDao = new UsuarioDAO();
+        if (name.isEmpty() || email.isEmpty() || cell.isEmpty() || pass.isEmpty() || confirmpass.isEmpty() || identificacion.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    
+    if (!pass.equals(confirmpass)) {
+        JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    try{
+            UsuarioDAO UsuarioDAO = new UsuarioDAO();
+
+            
+
+            UsuarioDAO.RegistrarUsuario(name, email, cell, identificacion, pass);
+
+            JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
+
+         limpiarCampos();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al Registrar usuario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        
+        
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtRpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRpassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,4 +302,8 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JTextField txtRname;
     private javax.swing.JTextField txtRpass;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarCampos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

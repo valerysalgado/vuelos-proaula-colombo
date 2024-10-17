@@ -6,35 +6,20 @@ package Model;
 
 //atributos
 public class Usuario {
-    private String usuario;
     private String contraseña;
     private String nombre;
-    private String rol;
     private String correo;
     private String telefono;
     private String identificacion;
     
 //constructor
-    public Usuario(String name, String apellido, String email, String identificacion, String celular) {
-        this.usuario = usuario;
+
+    public Usuario(String contraseña, String nombre, String correo, String telefono, String identificacion) {
         this.contraseña = contraseña;
         this.nombre = nombre;
-        this.rol = rol;
         this.correo = correo;
         this.telefono = telefono;
         this.identificacion = identificacion;
-        
-        
-    }
-//getter and setter
-   
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
     }
 
     public String getContraseña() {
@@ -49,38 +34,35 @@ public class Usuario {
         return nombre;
     }
 
-    public void setNombre (String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-     public String getCorreo() {
+    public String getCorreo() {
         return correo;
     }
 
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-     public String gettelefono(String telefono) {
+
+    public String getTelefono() {
         return telefono;
     }
 
-    public void settelefono(String telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-      public String getidentificacion(String identificacion) {
+
+    public String getIdentificacion() {
         return identificacion;
     }
 
-    public void setidentificacion(String identificacion) {
+    public void setIdentificacion(String identificacion) {
         this.identificacion = identificacion;
     }
+
+   
     
     
 }

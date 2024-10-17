@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.DriverManager;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class UsuarioDAO {
     private Connection connect() {
         Connection con = null;
         try {
-            String url = "jdbc:mysql://localhost:3306/login";
+            String url = "jdbc:mysql://localhost:3306/basededatosagencia";
             String usuario = "root";
             String contraseña = "";
             con = DriverManager.getConnection(url, usuario, contraseña);
@@ -24,12 +23,12 @@ public class UsuarioDAO {
         return con;
     }
 
-    public boolean authenticateUser(String username, String password) {
-        String sql = "SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?";
+    public boolean authenticateUser(String usuario, String contraseña) {
+        String sql = "SELECT * FROM usuarios WHERE nombre = ? AND contraseña = ?";
         try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
+            pstmt.setString(1, usuario);
+            pstmt.setString(2, contraseña);
             ResultSet rs = pstmt.executeQuery();
 
             return rs.next();
@@ -42,18 +41,19 @@ public class UsuarioDAO {
 
     public List<Usuario> obtenerUsuarios() {
         List<Usuario> usuarioList = new ArrayList<>();
-        String sql = "SELECT identificacion, nombre, apellido, correo, telefono FROM usuarios";
+        String sql = "SELECT identificacion, nombre,  correo, telefono FROM usuarios";
 
         try (Connection con = ConexionDB.conectar(); PreparedStatement pstmt = con.prepareStatement(sql); ResultSet rs = pstmt.executeQuery()) {
 
             while (rs.next()) {
-                String identificacion = rs.getString("identificacion");
+                String contraseña = rs.getString("contraseña");
                 String nombre = rs.getString("nombre");
-                String apellido = rs.getString("apellido");
+                String rol = rs.getString("rol");
                 String correo = rs.getString("correo");
                 String telefono = rs.getString("telefono");
+                 String identificacion = rs.getString("identificacion");
 
-                Usuario usuario = new Usuario(identificacion, nombre, apellido, correo, telefono);
+                Usuario usuario = new Usuario(contraseña, nombre,correo, telefono, identificacion);
                 usuarioList.add(usuario);
             }
 
@@ -64,17 +64,21 @@ public class UsuarioDAO {
         return usuarioList;
     }
 
-    public void RegistrarUsuario(String nombre, String apellidos, String correo, String telefono, LocalDate fechaderegistro) {
+    public void RegistrarUsuario(String contraseña, String nombre, String correo, String telefono, String identificacion) {
 
-        String sql = "INSERT INTO usuarios (identificacion, nombre, apellido, correo_electronico, telefono, fecha_contratacion) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios (contraseña, nombre, correo,telefono, identificacion) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection con = ConexionDB.conectar(); PreparedStatement pstmt = con.prepareStatement(sql)) {
-
+            
+            pstmt.setString(1, contraseña);
             pstmt.setString(2, nombre);
-            pstmt.setString(3, apellidos);
-            pstmt.setString(4, correo);
-            pstmt.setString(5, telefono);
-            pstmt.setDate(6, java.sql.Date.valueOf(fechaderegistro));
+            pstmt.setString(3, correo);
+            pstmt.setString(4, telefono);
+            pstmt.setString(5, identificacion);
+            
+            
+            
+            
 
             pstmt.executeUpdate();
             System.out.println("Usuario registardo con exito.");
