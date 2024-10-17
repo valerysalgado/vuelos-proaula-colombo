@@ -12,11 +12,12 @@ import javax.swing.*;
  * @author valer
  */
 public class Login extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Login
-     */
+    private inicioo inicioo;
+    
+    
+    
     public Login() {
+        this.inicioo = inicioo;
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -215,6 +216,7 @@ public class Login extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta", "Error de Login", JOptionPane.ERROR_MESSAGE);
         }
+        
 
     }//GEN-LAST:event_BtenterActionPerformed
 
