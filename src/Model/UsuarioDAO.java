@@ -14,22 +14,22 @@ public class UsuarioDAO {
     private Connection connect() {
         Connection con = null;
         try {
-            String url = "jdbc:mysql://localhost:3306/login";
-            String usuario = "root";
+            String url = "jdbc:mysql://localhost:3306/basededatosagencia";
+            String nombre = "root";
             String contraseña = "";
-            con = DriverManager.getConnection(url, usuario, contraseña);
+            con = DriverManager.getConnection(url, nombre, contraseña);
         } catch (SQLException e) {
             System.out.println("Error en la conexion: " + e.getMessage());
         }
         return con;
     }
 
-    public boolean authenticateUser(String username, String password) {
-        String sql = "SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?";
+    public boolean authenticateUser(String nombre, String contraseña) {
+        String sql = "SELECT * FROM usuarios WHERE nombre = ? AND contraseña = ?";
         try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
+            pstmt.setString(1, nombre);
+            pstmt.setString(2, contraseña);
             ResultSet rs = pstmt.executeQuery();
 
             return rs.next();
