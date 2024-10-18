@@ -3,9 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/sebas/OneDrive/Desktop/proyectos%20clonados%20git/vuelos-proaula-colombo/src/Model/Usuario.java</file>
             <file>file:/C:/Users/sebas/OneDrive/Desktop/proyectos%20clonados%20git/vuelos-proaula-colombo/src/View/inicioo.java</file>
             <file>file:/C:/Users/sebas/OneDrive/Desktop/proyectos%20clonados%20git/vuelos-proaula-colombo/src/Model/UsuarioDAO.java</file>
+=======
+            <file>file:/C:/Users/Sebastian%20JB/Desktop/proyectos%20clonados/vuelos-proaula-colombo/src/View/terminosycondiciones.java</file>
+            <file>file:/C:/Users/Sebastian%20JB/Desktop/proyectos%20clonados/vuelos-proaula-colombo/src/View/planes.java</file>
+            <file>file:/C:/Users/Sebastian%20JB/Desktop/proyectos%20clonados/vuelos-proaula-colombo/src/Model/UsuarioDAO.java</file>
+            <file>file:/C:/Users/Sebastian%20JB/Desktop/proyectos%20clonados/vuelos-proaula-colombo/src/View/Login.java</file>
+            <file>file:/C:/Users/Sebastian%20JB/Desktop/proyectos%20clonados/vuelos-proaula-colombo/src/View/sistemadepago.java</file>
+            <file>file:/C:/Users/Sebastian%20JB/Desktop/proyectos%20clonados/vuelos-proaula-colombo/src/View/Registro.java</file>
+            <file>file:/C:/Users/Sebastian%20JB/Desktop/proyectos%20clonados/vuelos-proaula-colombo/src/View/vuelosdisponibles.java</file>
+            <file>file:/C:/Users/Sebastian%20JB/Desktop/proyectos%20clonados/vuelos-proaula-colombo/src/View/Admin.java</file>
+            <file>file:/C:/Users/Sebastian%20JB/Desktop/proyectos%20clonados/vuelos-proaula-colombo/src/View/inicioo.java</file>
+>>>>>>> a7f31db6b33788aaad5eb70dfb81b00d863d2466
         </group>
     </open-files>
 </project-private>

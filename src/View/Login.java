@@ -201,12 +201,12 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtenterActionPerformed
-        String username = txtemail.getText();
-        String password = new String(txtpassword.getPassword());
+        String nombre = txtemail.getText();
+        String contraseña = new String(txtpassword.getPassword());
 
         UsuarioDAO userDao = new UsuarioDAO();
 
-        boolean isAuthenticated = userDao.authenticateUser(username, password);
+        boolean isAuthenticated = userDao.authenticateUser(nombre, contraseña);
 
         if (isAuthenticated) {
             new inicioo().setVisible(true);
