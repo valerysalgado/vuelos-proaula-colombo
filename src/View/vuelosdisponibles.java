@@ -4,18 +4,23 @@
  */
 package View;
 
+import Model.Vuelosdisponibles;
+import java.util.List;
+
 /**
  *
  * @author valer
  */
 public class vuelosdisponibles extends javax.swing.JFrame {
 
+    public vuelosdisponibles(List<Vuelosdisponibles> vuelos) {
+        
+    }
+
     /**
      * Creates new form vuelosdisponibles
      */
-    public vuelosdisponibles() {
-        initComponents();
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -559,7 +564,8 @@ public class vuelosdisponibles extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vuelosdisponibles().setVisible(true);
+                List<Vuelosdisponibles> vuelos = null;
+                new vuelosdisponibles(vuelos).setVisible(true);
             }
         });
     }

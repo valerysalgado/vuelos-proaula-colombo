@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 public class ConexionDB {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/login?characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
+    private static final String URL = "jdbc:mysql://localhost:3306/basededatosagencia?characterEncoding=utf8&useSSL=false&serverTimezone=UTC";
     private static final String usuario = "root"; 
     private static final String contraseña = "";     
 
@@ -24,5 +24,9 @@ public class ConexionDB {
             JOptionPane.showMessageDialog(null, "Error de conexion: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         return con;
+    }
+
+    static Connection getConnection() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

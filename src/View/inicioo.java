@@ -4,6 +4,14 @@
  */
 package View;
 
+import Model.Vuelosdisponibles;
+import Model.VuelosdisponiblesDAO;
+import java.util.Date;
+import java.util.List;
+import javax.swing.*;
+
+
+
 /**
  *
  * @author valer
@@ -16,6 +24,8 @@ public class inicioo extends javax.swing.JFrame {
     public inicioo() {
         initComponents();
         this.setLocationRelativeTo(null);
+        fecha_ida.setMinSelectableDate(new Date ());
+        fecha_vuelta.setMinSelectableDate(new Date());
     }
 
     /**
@@ -32,15 +42,17 @@ public class inicioo extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        txtOrigen = new javax.swing.JComboBox<>();
+        txtDestino = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        txtNpersonas = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        fecha_vuelta = new com.toedter.calendar.JDateChooser();
+        fecha_ida = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -72,38 +84,36 @@ public class inicioo extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------", "Bogota", "Cartagena", "Medellin" }));
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+        txtOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------", "Bogota", "Cartagena", "Medellin" }));
+        txtOrigen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOrigenActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------", "Bogota", "Cartagena", "Medellin", " " }));
-        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
+        txtDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------", "Bogota", "Cartagena", "Medellin", " " }));
+        jPanel3.add(txtDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
 
         jLabel4.setText("Origen");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
         jLabel5.setText("Destino");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel6.setText("Fecha vuelta");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, 20));
+
+        txtNpersonas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", " " }));
+        txtNpersonas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtNpersonasActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 80, -1));
-
-        jLabel6.setText("Fecha");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, -1, 20));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", " " }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 40, -1));
+        jPanel3.add(txtNpersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 50, -1));
 
         jLabel8.setText("N_person");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 60, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 60, -1));
 
         jButton2.setBackground(new java.awt.Color(38, 75, 100));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,7 +123,25 @@ public class inicioo extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 90, 40));
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 90, 40));
+
+        jLabel10.setText("Fecha de ida");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 90, 20));
+
+        fecha_vuelta.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                fecha_vueltaPropertyChange(evt);
+            }
+        });
+        jPanel3.add(fecha_vuelta, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 100, -1));
+
+        fecha_ida.setMinSelectableDate(new java.util.Date(-62135747891000L));
+        fecha_ida.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                fecha_idaPropertyChange(evt);
+            }
+        });
+        jPanel3.add(fecha_ida, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 100, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 680, 220));
 
@@ -139,21 +167,66 @@ public class inicioo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNpersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNpersonasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_txtNpersonasActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+      
+        //agarramos los datos del usuario
+       String origen = (String) txtOrigen.getSelectedItem();
+       String destino = (String) txtDestino.getSelectedItem();
+       String Npersonas = (String) txtNpersonas.getSelectedItem();
+       java.util.Date fechaIda = fecha_ida.getDate();
+       java.util.Date fechaVuelta = fecha_vuelta.getDate();
+       
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        String fechaIdaStr = sdf.format(fechaIda);
+        String fechaVueltaStr = sdf.format(fechaVuelta);
+        
+         int numPersonas = Integer.parseInt(Npersonas);
+        
+         VuelosdisponiblesDAO dao = new VuelosdisponiblesDAO();
+         List<Vuelosdisponibles> vuelos = dao.buscarVuelos(origen, destino, fechaIdaStr, fechaVueltaStr, numPersonas);
+        
+       if (!vuelos.isEmpty()) {
+        new vuelosdisponibles(vuelos).setVisible(true);
+        
+         this.dispose(); 
+         
+         
+        } else {
+        Vuelosdisponibles vueloCercano = dao.buscarFechaCercana(origen, destino, fechaIdaStr); // Mover aquí
+
+        if (vueloCercano != null) {
+        // Mostrar la fecha más cercana
+        JOptionPane.showMessageDialog(this, "No hay vuelos disponibles para. La fecha más cercana es: " + vueloCercano.getFechaSalida());
+         } else {
+        // Mostrar mensaje indicando que no hay vuelos disponibles
+        JOptionPane.showMessageDialog(this, "No hay vuelos disponibles.");
+         }
+}
+       
+       
+       
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                 new Login().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void fecha_idaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fecha_idaPropertyChange
+   // TODO add your handling code here:
+    }//GEN-LAST:event_fecha_idaPropertyChange
+
+    private void txtOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrigenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOrigenActionPerformed
+
+    private void fecha_vueltaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fecha_vueltaPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fecha_vueltaPropertyChange
 
     /**
      * @param args the command line arguments
@@ -191,11 +264,11 @@ public class inicioo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser fecha_ida;
+    private com.toedter.calendar.JDateChooser fecha_vuelta;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -206,6 +279,8 @@ public class inicioo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> txtDestino;
+    private javax.swing.JComboBox<String> txtNpersonas;
+    private javax.swing.JComboBox<String> txtOrigen;
     // End of variables declaration//GEN-END:variables
 }
