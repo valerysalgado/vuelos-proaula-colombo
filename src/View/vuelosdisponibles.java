@@ -4,7 +4,7 @@
  */
 package View;
 
-import Model.Vuelosdisponibles;
+import Model.Sesion;
 import java.util.List;
 
 /**
@@ -13,8 +13,13 @@ import java.util.List;
  */
 public class vuelosdisponibles extends javax.swing.JFrame {
 
-    public vuelosdisponibles(List<Vuelosdisponibles> vuelos) {
-        
+   public vuelosdisponibles() {
+       
+        initComponents();
+        this.setLocationRelativeTo(null);
+        if (Sesion.isSesionIniciada()) {
+            btnlogin.setVisible(false); 
+        }
     }
 
     /**
@@ -33,7 +38,7 @@ public class vuelosdisponibles extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnlogin = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -92,14 +97,14 @@ public class vuelosdisponibles extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(54, 90, 108));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
-        jButton2.setText("Login");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnlogin.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        btnlogin.setText("Login");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnloginActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, -10, 60, 60));
+        jPanel2.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, -10, 60, 60));
 
         jButton1.setText(" ⭠");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -511,7 +516,7 @@ public class vuelosdisponibles extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+       new planes().setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -530,9 +535,11 @@ public class vuelosdisponibles extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-                new Login().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+        Sesion.iniciarSesion(); 
+         btnlogin.setVisible(false);      
+        new Login().setVisible(true);
+    }//GEN-LAST:event_btnloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -564,15 +571,15 @@ public class vuelosdisponibles extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                List<Vuelosdisponibles> vuelos = null;
-                new vuelosdisponibles(vuelos).setVisible(true);
+                
+                new vuelosdisponibles().setVisible(true); // Abre la ventana sin lógica adicional
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnlogin;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

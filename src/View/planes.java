@@ -4,6 +4,10 @@
  */
 package View;
 
+import Model.Sesion;
+
+
+
 /**
  *
  * @author Sebastian JB
@@ -15,6 +19,12 @@ public class planes extends javax.swing.JFrame {
      */
     public planes() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        if (Sesion.isSesionIniciada()) {
+            btnlogin.setVisible(false); 
+        }
+        
+         
     }
 
     /**
@@ -29,8 +39,8 @@ public class planes extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnlogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -71,15 +81,6 @@ public class planes extends javax.swing.JFrame {
         jLabel10.setText("NOESAVIANCA");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 100, 20));
 
-        jButton2.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
-        jButton2.setText("Login");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, -10, -1, 60));
-
         jButton1.setText(" ⭠");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +88,15 @@ public class planes extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, -10, 70, 60));
+
+        btnlogin.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        btnlogin.setText("Login");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnloginActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, -10, 60, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 40));
 
@@ -287,12 +297,14 @@ public class planes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new inicioo().setVisible(true);       // TODO add your handling code here:
+         new vuelosdisponibles().setVisible(true);      // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-                new Login().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+        Sesion.iniciarSesion();
+        btnlogin.setVisible(false);
+        new Login().setVisible(true);
+    }//GEN-LAST:event_btnloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,8 +342,8 @@ public class planes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnlogin;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

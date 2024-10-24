@@ -4,8 +4,10 @@
  */
 package View;
 
+import Model.Sesion;
 import Model.Vuelosdisponibles;
 import Model.VuelosdisponiblesDAO;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.*;
@@ -26,6 +28,27 @@ public class inicioo extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         fecha_ida.setMinSelectableDate(new Date ());
         fecha_vuelta.setMinSelectableDate(new Date());
+        
+         fecha_ida.setMinSelectableDate(new Date());
+        fecha_vuelta.setMinSelectableDate(new Date());
+        
+        // Listener para la fecha de ida
+        fecha_ida.addPropertyChangeListener(evt -> {
+            if ("date".equals(evt.getPropertyName())) {
+                Date fechaSeleccionada = fecha_ida.getDate();
+                if (fechaSeleccionada != null) {
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(fechaSeleccionada);
+                    calendar.add(Calendar.DAY_OF_MONTH, 1); 
+                    
+                    fecha_vuelta.setMinSelectableDate(calendar.getTime()); 
+                }
+            }
+        });
+        
+        if (Sesion.isSesionIniciada()) {
+            btnlogin.setVisible(false); 
+        }
     }
 
     /**
@@ -39,7 +62,7 @@ public class inicioo extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnlogin = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         txtOrigen = new javax.swing.JComboBox<>();
@@ -64,14 +87,14 @@ public class inicioo extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(192, 201, 211)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnlogin.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
+        btnlogin.setText("Login");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnloginActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, -10, -1, 60));
+        jPanel4.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, -10, -1, 60));
 
         jLabel7.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,6 +203,16 @@ public class inicioo extends javax.swing.JFrame {
        java.util.Date fechaIda = fecha_ida.getDate();
        java.util.Date fechaVuelta = fecha_vuelta.getDate();
        
+         if (origen.equals("-------") || destino.equals("-------") || Npersonas.equals(" ") || fechaIda == null || fechaVuelta == null) {
+        JOptionPane.showMessageDialog(this, "Por favor, seleccione todos los campos requeridos.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return; // Salir del método si hay campos vacíos
+    }
+         
+         if (fechaVuelta.before(fechaIda)) {
+        JOptionPane.showMessageDialog(this, "La fecha de vuelta no puede ser menor que la fecha de ida. Intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+        return; // Salir del método si la fecha de vuelta es incorrecta
+    }
+       
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
         String fechaIdaStr = sdf.format(fechaIda);
         String fechaVueltaStr = sdf.format(fechaVuelta);
@@ -190,7 +223,7 @@ public class inicioo extends javax.swing.JFrame {
          List<Vuelosdisponibles> vuelos = dao.buscarVuelos(origen, destino, fechaIdaStr, fechaVueltaStr, numPersonas);
         
        if (!vuelos.isEmpty()) {
-        new vuelosdisponibles(vuelos).setVisible(true);
+         new vuelosdisponibles().setVisible(true);
         
          this.dispose(); 
          
@@ -200,10 +233,10 @@ public class inicioo extends javax.swing.JFrame {
 
         if (vueloCercano != null) {
         // Mostrar la fecha más cercana
-        JOptionPane.showMessageDialog(this, "No hay vuelos disponibles para. La fecha más cercana es: " + vueloCercano.getFechaSalida());
+        JOptionPane.showMessageDialog(this, "No hay vuelos disponibles para ese dia. La fecha más cercana es: " + vueloCercano.getFechaSalida());
          } else {
         // Mostrar mensaje indicando que no hay vuelos disponibles
-        JOptionPane.showMessageDialog(this, "No hay vuelos disponibles.");
+        JOptionPane.showMessageDialog(this, "No hay vuelos disponibles de " + origen + " a " + destino +" en estos momentos.");
          }
 }
        
@@ -212,9 +245,12 @@ public class inicioo extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                new Login().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+         Sesion.iniciarSesion(); 
+         btnlogin.setVisible(false);
+          new Login().setVisible(true);
+          
+    }//GEN-LAST:event_btnloginActionPerformed
 
     private void fecha_idaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fecha_idaPropertyChange
    // TODO add your handling code here:
@@ -264,9 +300,9 @@ public class inicioo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnlogin;
     private com.toedter.calendar.JDateChooser fecha_ida;
     private com.toedter.calendar.JDateChooser fecha_vuelta;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
